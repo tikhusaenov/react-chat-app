@@ -2,6 +2,8 @@ const express = require('express');
 const socketio = require('socket.io');
 const http = require('http');
 
+const { addUser, removeUser, getUser, getUsersInRoom } = require('./users');
+
 const router = require('./router')
 const app = express()
 const server = http.createServer(app)
@@ -19,12 +21,43 @@ io.on('connection', socket => {
 
     socket.on('join', ({ name }, callback) => {
         console.log(name)
+        const { error, user } = addUser({ id: socket.id, name})
 
+        if (error) return callback(error)
 
+        socket.emit('message', {user: 'admin', text: `${user.name}, welcome to the chat room!`})
+        socket.broadcast.emit('message', {user: 'admin', text: `${user.name} has joined!`})
+        io.emit('roomData', {  users: getUsersInRoom() });
+        callback()
+    })
+
+    socket.on('sendMessage', (message, callback) => {
+        const user = getUser(socket.id)
+
+        io.emit('message', { user: user.name, text: message})
+
+        callback()
+    })
+
+    // socket.on('replyMessage', (message, callback) => {
+    //     const user = getUser(socket.id)
+    //     socket.to(user.id).emit('message', { user: user.name, text: message})
+    //
+    //     callback()
+    // })
+
+    socket.on('typing', (data) => {
+        const user = getUser(socket.id)
+        socket.broadcast.emit('typing', {text: `${user.name} is typing...`})
     })
 
     socket.on('disconnect', () => {
         console.log('User had left!!!')
+        const user = removeUser(socket.id);
+        if(user) {
+            io.emit('message', { user: 'admin', text: `${user.name} has left.` });
+            io.emit('roomData', { users: getUsersInRoom()});
+        }
     })
 })
 

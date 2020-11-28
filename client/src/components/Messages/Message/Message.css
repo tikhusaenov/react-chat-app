@@ -1,0 +1,81 @@
+.messageBox {
+
+    background: #F3F3F3;
+    border-radius: 15px;
+    color: white;
+    padding: 0 30px;
+    display: inline-block;
+    max-width: 80%;
+}
+
+.messageText {
+    width: 100%;
+    letter-spacing: 0;
+    float: left;
+    font-size: 1em;
+    word-wrap: break-word;
+}
+
+.messageText img {
+    vertical-align: middle;
+}
+
+.messageContainer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 2%;
+    margin-top: 3px;
+
+}
+
+.sentText {
+    display: flex;
+    align-items: center;
+    font-family: Helvetica;
+    color: white;
+    letter-spacing: 0.3px;
+}
+
+.replyButton {
+    border: none;
+    background: none;
+    cursor: pointer;
+    opacity: 0.3;
+    transition: 0.2s;
+}
+
+.replyButton:hover {
+    opacity: 1;
+}
+
+.pl-10 {
+    padding-left: 10px;
+}
+
+.pr-10 {
+    padding-right: 10px;
+}
+
+.justifyStart {
+    justify-content: flex-start;
+}
+
+.justifyEnd {
+    justify-content: flex-end;
+}
+
+.colorWhite {
+    color: white;
+}
+
+.colorDark {
+    color: #353535;
+}
+
+.backgroundBlue {
+    background: #5A5A5A;
+}
+
+.backgroundLight {
+    background: #F3F3F3;
+}
