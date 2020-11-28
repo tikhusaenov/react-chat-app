@@ -8,15 +8,17 @@ import './Messages.css';
 
 
 
-const Messages = ({ messages, name, replyMessage}) => (
+const Messages = ({ messages, name, data}) => (
     <ScrollToBottom className="messages">
         {
             messages.map((message, i) =>
                 <div key={i}>
+                    {data}
                     <Message message={message} name={name} />
                 </div>
 
             )
+
         }
     </ScrollToBottom>
 );

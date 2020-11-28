@@ -3,6 +3,7 @@ import queryString from 'query-string';
 import io from "socket.io-client";
 import TextContainer from '../TextContainer/TextContainer';
 import Messages from '../Messages/Messages';
+import Feedback from "../Feedback/Feedback";
 import InfoBar from '../InfoBar/InfoBar';
 import Input from '../Input/Input';
 import './Chat.css';
@@ -19,7 +20,8 @@ const Chat = ({ location }) => {
     const [message, setMessage] = useState('');
     const [users, setUsers] = useState('');
     const [messages, setMessages] = useState([]);
-    const [feedback, setFeedback] = useState('')
+    const [typing, setTyping] = useState(false)
+    const [data, setData] = useState([])
 
 
 
@@ -43,11 +45,19 @@ const Chat = ({ location }) => {
             setUsers(users);
         });
 
-        // socket.on('typing', feedback => {
-        //     setFeedback(feedback)
-        // })
 
     }, []);
+
+    useEffect(() => {
+        socket.emit('typing', {user: name, typing:true})
+
+        socket.on('display', (data) => {
+            console.log(`${data.user} is typing`)
+        })
+
+    }, [message, typing])
+
+
 
     const sendMessage = (event) => {
         event.preventDefault();
@@ -57,7 +67,7 @@ const Chat = ({ location }) => {
         }
     }
 
-    console.log(message,messages)
+
 
 
 
@@ -77,8 +87,9 @@ const Chat = ({ location }) => {
                 <TextContainer users={users}/>
                 <div className="container">
                     <InfoBar/>
-                    <Messages messages={messages} name={name}/>
-                    <Input message={message} sendMessage={sendMessage} setMessage={setMessage}/>
+                    <Messages data={data} messages={messages} name={name}/>
+
+                    <Input setTyping={setTyping} message={message} sendMessage={sendMessage} setMessage={setMessage}/>
                 </div>
 
             </div>

@@ -46,9 +46,10 @@ io.on('connection', socket => {
     //     callback()
     // })
 
-    socket.on('typing', (data) => {
-        const user = getUser(socket.id)
-        socket.broadcast.emit('typing', {text: `${user.name} is typing...`})
+    socket.on('typing', (data)=>{
+        if(data.typing === true)
+            socket.broadcast.emit('display', data )
+
     })
 
     socket.on('disconnect', () => {

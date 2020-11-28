@@ -1,10 +1,10 @@
 import React from 'react'
 
 
-const Feedback = ({feedback}) => {
+const Feedback = ({data}) => {
     return (
         <div>
-            <h1>{feedback}</h1>
+            <h1>{data}</h1>
         </div>
     )
 }
