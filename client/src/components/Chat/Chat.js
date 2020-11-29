@@ -49,15 +49,16 @@ const Chat = ({ location }) => {
     }, []);
 
     useEffect(() => {
-        socket.emit('typing', {user: name, typing:true})
+        socket.emit('typing', {user: name, typing})
 
-        socket.on('display', ({user}) => {
-            console.log(`${user} is typing`)
-
-
+        socket.on('display', (data) => {
+            // const mes = document.querySelector('.container')
+            // const paragraph = document.createElement('p')
+            // paragraph.innerHTML = `${data.user} is typing...`
+            // mes.appendChild(paragraph)
         })
 
-    }, [message, typing])
+    }, [message])
 
 
 
@@ -89,7 +90,7 @@ const Chat = ({ location }) => {
                 <TextContainer users={users}/>
                 <div className="container">
                     <InfoBar/>
-                    <Messages data={data} messages={messages} name={name}/>
+                    <Messages messages={messages} name={name}/>
 
                     <Input setTyping={setTyping} message={message} sendMessage={sendMessage} setMessage={setMessage}/>
                 </div>

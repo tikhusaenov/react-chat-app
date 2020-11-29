@@ -20,7 +20,6 @@ const Input = ({ setMessage, sendMessage, message, setTyping}) => {
                     setMessage(value)
                     if(value) {
                         setTyping(true)
-
                     }
                 }}
                 onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null}
