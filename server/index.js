@@ -47,8 +47,12 @@ io.on('connection', socket => {
     // })
 
     socket.on('typing', (data)=>{
-        if(data.typing === true)
+        if(data.typing === true) {
             socket.broadcast.emit('display', data )
+
+        }
+
+
 
     })
 

@@ -51,8 +51,10 @@ const Chat = ({ location }) => {
     useEffect(() => {
         socket.emit('typing', {user: name, typing:true})
 
-        socket.on('display', (data) => {
-            console.log(`${data.user} is typing`)
+        socket.on('display', ({user}) => {
+            console.log(`${user} is typing`)
+
+
         })
 
     }, [message, typing])
