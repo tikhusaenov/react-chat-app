@@ -5,6 +5,7 @@ import ScrollToBottom from 'react-scroll-to-bottom';
 import Message from './Message/Message';
 
 import './Messages.css';
+import Feedback from "../Feedback/Feedback";
 
 
 
@@ -19,7 +20,10 @@ const Messages = ({ messages, name}) => (
             )
 
         }
+
+
     </ScrollToBottom>
+
 );
 
 export default Messages;

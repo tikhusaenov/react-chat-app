@@ -21,7 +21,7 @@ const Chat = ({ location }) => {
     const [users, setUsers] = useState('');
     const [messages, setMessages] = useState([]);
     const [myTyping, setMyTyping] = useState(false)
-
+    const [typingUser, setTypingUser] = useState('')
 
 
 
@@ -41,6 +41,7 @@ const Chat = ({ location }) => {
     useEffect(() => {
         socket.on('message', message => {
             setMessages(messages => [ ...messages, message ]);
+            setMyTyping(false)
         });
         socket.on("roomData", ({ users }) => {
             setUsers(users);
@@ -48,10 +49,11 @@ const Chat = ({ location }) => {
         socket.on('myTyping',({user}) => {
             if (!myTyping) {
                 setMyTyping(true)
-                setName(user)
+                setTypingUser(user)
                 console.log(`${user} typing is received`)
 
             }
+
         })
 
 
@@ -63,9 +65,11 @@ const Chat = ({ location }) => {
     const sendMessage = (event) => {
         event.preventDefault();
         if(message) {
-            socket.emit('sendMessage', message, () => setMessage(''));
+            socket.emit('sendMessage', message, () => {
+                setMessage('')
+            });
         }
-        setMyTyping(false)
+
     }
 
     const sendTyping = (status) => {
@@ -101,9 +105,7 @@ const Chat = ({ location }) => {
 
                     <Messages messages={messages} name={name}/>
 
-                    <Feedback myTyping={myTyping} name={name}/>
-
-
+                    <Feedback myTyping={myTyping} typingUser={typingUser}/>
 
 
                     <Input sendTyping={sendTyping} message={message} sendMessage={sendMessage} setMessage={setMessage}/>

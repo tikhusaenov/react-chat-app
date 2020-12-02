@@ -13,7 +13,6 @@
 .outerContainer {
     display: flex;
     justify-content: space-between;
-
     height: 95vh;
     background-color: #666666;
 }

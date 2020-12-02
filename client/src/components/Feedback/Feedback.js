@@ -1,16 +1,14 @@
 import React from 'react'
+import './Feedback.css'
 
-
-const Feedback = ({ myTyping, name}) => {
+const Feedback = ({ myTyping, typingUser}) => {
 
     return (
         myTyping
             ? (
-                <div>
-                    <p>
-                        {name} is typing...
-                    </p>
-                </div>
+                <p className="userIsTyping">
+                    {typingUser} is typing...
+                </p>
             )
             : null
 
