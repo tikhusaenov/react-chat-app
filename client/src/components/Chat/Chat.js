@@ -20,8 +20,9 @@ const Chat = ({ location }) => {
     const [message, setMessage] = useState('');
     const [users, setUsers] = useState('');
     const [messages, setMessages] = useState([]);
-    const [typing, setTyping] = useState(false)
-    const [data, setData] = useState([])
+    const [myTyping, setMyTyping] = useState(false)
+
+
 
 
 
@@ -44,30 +45,37 @@ const Chat = ({ location }) => {
         socket.on("roomData", ({ users }) => {
             setUsers(users);
         });
+        socket.on('myTyping',({user}) => {
+            if (!myTyping) {
+                setMyTyping(true)
+                setName(user)
+                console.log(`${user} typing is received`)
+
+            }
+        })
 
 
     }, []);
 
-    useEffect(() => {
-        socket.emit('typing', {user: name, typing})
-
-        socket.on('display', (data) => {
-            // const mes = document.querySelector('.container')
-            // const paragraph = document.createElement('p')
-            // paragraph.innerHTML = `${data.user} is typing...`
-            // mes.appendChild(paragraph)
-        })
-
-    }, [message])
 
 
 
     const sendMessage = (event) => {
         event.preventDefault();
-
         if(message) {
             socket.emit('sendMessage', message, () => setMessage(''));
         }
+        setMyTyping(false)
+    }
+
+    const sendTyping = (status) => {
+        if(status) {
+            setMyTyping(status)
+
+            socket.emit('typing', name)
+            setMyTyping(false)
+        }
+
     }
 
 
@@ -90,9 +98,15 @@ const Chat = ({ location }) => {
                 <TextContainer users={users}/>
                 <div className="container">
                     <InfoBar/>
+
                     <Messages messages={messages} name={name}/>
 
-                    <Input setTyping={setTyping} message={message} sendMessage={sendMessage} setMessage={setMessage}/>
+                    <Feedback myTyping={myTyping} name={name}/>
+
+
+
+
+                    <Input sendTyping={sendTyping} message={message} sendMessage={sendMessage} setMessage={setMessage}/>
                 </div>
 
             </div>

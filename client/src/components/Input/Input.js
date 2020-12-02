@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 import './Input.css';
 
-const Input = ({ setMessage, sendMessage, message, setTyping}) => {
+const Input = ({ setMessage, sendMessage, message, sendTyping}) => {
 
 
 
@@ -19,7 +19,9 @@ const Input = ({ setMessage, sendMessage, message, setTyping}) => {
                 onChange={({target: {value}}) => {
                     setMessage(value)
                     if(value) {
-                        setTyping(true)
+                        sendTyping(true)
+                    } else {
+                        sendTyping(false)
                     }
                 }}
                 onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null}

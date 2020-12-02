@@ -33,9 +33,10 @@ io.on('connection', socket => {
 
     socket.on('sendMessage', (message, callback) => {
         const user = getUser(socket.id)
-
-        io.emit('message', { user: user.name, text: message})
-
+        console.log(user)
+        if (user) {
+            io.emit('message', { user: user.name, text: message})
+        }
         callback()
     })
 
@@ -46,12 +47,9 @@ io.on('connection', socket => {
     //     callback()
     // })
 
-    socket.on('typing', (data)=>{
-        if(data.typing === true) {
-            socket.broadcast.emit('display', data )
-
-        }
-
+    socket.on('typing', () => {
+        const user = getUser(socket.id)
+        socket.broadcast.emit('myTyping', {user: user.name})
 
 
     })

@@ -1,11 +1,20 @@
 import React from 'react'
 
 
-const Feedback = ({data}) => {
+const Feedback = ({ myTyping, name}) => {
+
     return (
-        <div>
-            <h1>{data}</h1>
-        </div>
+        myTyping
+            ? (
+                <div>
+                    <p>
+                        {name} is typing...
+                    </p>
+                </div>
+            )
+            : null
+
+
     )
 }
 
