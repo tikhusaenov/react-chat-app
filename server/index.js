@@ -40,12 +40,7 @@ io.on('connection', socket => {
         callback()
     })
 
-    // socket.on('replyMessage', (message, callback) => {
-    //     const user = getUser(socket.id)
-    //     socket.to(user.id).emit('message', { user: user.name, text: message})
-    //
-    //     callback()
-    // })
+
 
     socket.on('typing', () => {
         const user = getUser(socket.id)

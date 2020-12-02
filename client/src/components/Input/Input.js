@@ -8,10 +8,10 @@ const Input = ({ setMessage, sendMessage, message, sendTyping}) => {
 
     return (
 
-        <form className="form">
+        <form className="formInput">
 
             <input
-                className="input"
+                className="messageInput"
                 type="text"
                 placeholder="Write a message..."
                 value={message}

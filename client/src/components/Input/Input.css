@@ -1,10 +1,10 @@
-.form {
+.formInput {
     display: flex;
     border-top: 1px solid #D3D3D3;
     height: 8%;
 }
 
-.input {
+.messageInput {
     border: none;
     width: 100%;
     padding-left: 5%;
