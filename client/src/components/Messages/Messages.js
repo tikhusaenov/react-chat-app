@@ -9,12 +9,12 @@ import Feedback from "../Feedback/Feedback";
 
 
 
-const Messages = ({ messages, name}) => (
+const Messages = ({ messages, name, replyMessage, repliedMessage}) => (
     <ScrollToBottom className="messages">
         {
             messages.map((message, i) =>
                 <div key={i}>
-                    <Message message={message} name={name} />
+                    <Message message={message} name={name} replyMessage={replyMessage} repliedMessage={repliedMessage}/>
                 </div>
 
             )

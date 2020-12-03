@@ -6,6 +6,7 @@ import Messages from '../Messages/Messages';
 import Feedback from "../Feedback/Feedback";
 import InfoBar from '../InfoBar/InfoBar';
 import Input from '../Input/Input';
+import RepliedMessage from "../RepliedMessage/RepliedMessage";
 import './Chat.css';
 
 
@@ -22,6 +23,7 @@ const Chat = ({ location }) => {
     const [messages, setMessages] = useState([]);
     const [myTyping, setMyTyping] = useState(false)
     const [typingUser, setTypingUser] = useState('')
+    const [repliedMessage, setRepliedMessage] = useState('')
 
 
 
@@ -79,7 +81,12 @@ const Chat = ({ location }) => {
             socket.emit('typing', name)
             setMyTyping(false)
         }
+    }
 
+    const replyMessage = (event, {text,user}) => {
+        event.preventDefault();
+        setRepliedMessage(text)
+        console.log(text, user)
     }
 
 
@@ -102,15 +109,11 @@ const Chat = ({ location }) => {
                 <TextContainer users={users}/>
                 <div className="container">
                     <InfoBar/>
-
-                    <Messages messages={messages} name={name}/>
-
+                    <Messages messages={messages} name={name} replyMessage={replyMessage} repliedMessage={repliedMessage}/>
                     <Feedback myTyping={myTyping} typingUser={typingUser}/>
-
-
+                    <RepliedMessage repliedMessage={repliedMessage}/>
                     <Input sendTyping={sendTyping} message={message} sendMessage={sendMessage} setMessage={setMessage}/>
                 </div>
-
             </div>
         </div>
     );
