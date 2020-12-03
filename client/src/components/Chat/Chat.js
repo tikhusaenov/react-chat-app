@@ -85,7 +85,7 @@ const Chat = ({ location }) => {
 
     const replyMessage = (event, {text,user}) => {
         event.preventDefault();
-        setRepliedMessage(text)
+        setRepliedMessage(`${user}: ${text}`)
         console.log(text, user)
     }
 
@@ -107,11 +107,16 @@ const Chat = ({ location }) => {
             </div>
             <div className="outerContainer">
                 <TextContainer users={users}/>
+
                 <div className="container">
                     <InfoBar/>
+
                     <Messages messages={messages} name={name} replyMessage={replyMessage} repliedMessage={repliedMessage}/>
+
                     <Feedback myTyping={myTyping} typingUser={typingUser}/>
-                    <RepliedMessage repliedMessage={repliedMessage}/>
+
+                    <RepliedMessage repliedMessage={repliedMessage} setRepliedMessage={setRepliedMessage}/>
+
                     <Input sendTyping={sendTyping} message={message} sendMessage={sendMessage} setMessage={setMessage}/>
                 </div>
             </div>

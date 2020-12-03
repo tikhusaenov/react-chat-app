@@ -1,0 +1,20 @@
+.repliedMessage {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    margin-left: 10px;
+
+}
+.removeRepliedMessage {
+    background: none;
+    opacity: 0.4;
+    transition: 0.2s;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.removeRepliedMessage:hover {
+    opacity: 1;
+}

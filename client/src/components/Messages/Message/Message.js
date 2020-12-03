@@ -16,6 +16,7 @@ const Message = ({ message: { text, user}, name, replyMessage, repliedMessage}) 
 
 
     return (
+
         isSentByCurrentUser
             ? (
                 <div className="messageContainer justifyEnd">
@@ -24,6 +25,7 @@ const Message = ({ message: { text, user}, name, replyMessage, repliedMessage}) 
                     <div className="messageBox backgroundBlue">
                         <p className="messageText colorWhite">{ReactEmoji.emojify(text)}</p>
                     </div>
+
                     <button className="replyButton" onClick={e => {
                         repliedMessage = {text, user}
                         replyMessage(e,repliedMessage)
