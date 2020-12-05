@@ -1,8 +1,17 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 import './Input.css';
 
-const Input = ({ setMessage, sendMessage, message, sendTyping}) => {
+const Input = ({
+                   messageWithRepliedMessage,
+                   setMessageWithRepliedMessage,
+                   repliedMessage,
+                   setMessage,
+                   sendMessage,
+                   message,
+                   sendTyping
+                }) =>
+{
 
 
 
@@ -20,11 +29,24 @@ const Input = ({ setMessage, sendMessage, message, sendTyping}) => {
                     setMessage(value)
                     if(value) {
                         sendTyping(true)
+                        if (repliedMessage) {
+                            setMessageWithRepliedMessage(true)
+                        }
                     } else {
                         sendTyping(false)
                     }
+
                 }}
-                onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null}
+                onKeyPress={event => {
+                    if (event.key === 'Enter') {
+                        if (messageWithRepliedMessage) {
+                            sendMessage(event, repliedMessage)
+                        }
+                        else {
+                            sendMessage(event)
+                        }
+                   } else return null
+                }}
             />
             <button className="sendButton" onClick={e => sendMessage(e)}>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="#B0B0B0" width="24" height="24" viewBox="0 0 24 24">

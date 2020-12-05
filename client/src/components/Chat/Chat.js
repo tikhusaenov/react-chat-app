@@ -24,6 +24,7 @@ const Chat = ({ location }) => {
     const [myTyping, setMyTyping] = useState(false)
     const [typingUser, setTypingUser] = useState('')
     const [repliedMessage, setRepliedMessage] = useState('')
+    const [messageWithRepliedMessage, setMessageWithRepliedMessage] = useState(false)
 
 
 
@@ -44,6 +45,7 @@ const Chat = ({ location }) => {
         socket.on('message', message => {
             setMessages(messages => [ ...messages, message ]);
             setMyTyping(false)
+
         });
         socket.on("roomData", ({ users }) => {
             setUsers(users);
@@ -64,11 +66,16 @@ const Chat = ({ location }) => {
 
 
 
-    const sendMessage = (event) => {
+    const sendMessage = (event, repliedMessage) => {
         event.preventDefault();
-        if(message) {
-            socket.emit('sendMessage', message, () => {
-                setMessage('')
+
+        if(message){
+            socket.emit('sendMessage',
+                repliedMessage ? `${repliedMessage} : ${message}` : message,
+                () => {
+                    setMessage('')
+                    setRepliedMessage(null)
+
             });
         }
 
@@ -86,7 +93,7 @@ const Chat = ({ location }) => {
     const replyMessage = (event, {text,user}) => {
         event.preventDefault();
         setRepliedMessage(`${user}: ${text}`)
-        console.log(text, user)
+        console.log(repliedMessage)
     }
 
 
@@ -117,7 +124,15 @@ const Chat = ({ location }) => {
 
                     <RepliedMessage repliedMessage={repliedMessage} setRepliedMessage={setRepliedMessage}/>
 
-                    <Input sendTyping={sendTyping} message={message} sendMessage={sendMessage} setMessage={setMessage}/>
+                    <Input
+                        repliedMessage={repliedMessage}
+                        messageWithRepliedMessage={messageWithRepliedMessage}
+                        setMessageWithRepliedMessage={setMessageWithRepliedMessage}
+                        sendTyping={sendTyping}
+                        message={message}
+                        sendMessage={sendMessage}
+                        setMessage={setMessage}
+                    />
                 </div>
             </div>
         </div>
