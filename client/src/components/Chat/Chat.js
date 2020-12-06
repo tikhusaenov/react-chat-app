@@ -44,6 +44,7 @@ const Chat = ({ location }) => {
     useEffect(() => {
         socket.on('message', message => {
             setMessages(messages => [ ...messages, message ]);
+
             setMyTyping(false)
 
         });
@@ -70,13 +71,18 @@ const Chat = ({ location }) => {
         event.preventDefault();
 
         if(message){
-            socket.emit('sendMessage',
-                repliedMessage ? `${repliedMessage} : ${message}` : message,
+            socket.emit(
+                'sendMessage',
+                repliedMessage ?
+                    `[${repliedMessage}] <=
+                     ${message}`
+
+                    : message,
                 () => {
                     setMessage('')
                     setRepliedMessage(null)
 
-            });
+                });
         }
 
     }
@@ -118,7 +124,14 @@ const Chat = ({ location }) => {
                 <div className="container">
                     <InfoBar/>
 
-                    <Messages messages={messages} name={name} replyMessage={replyMessage} repliedMessage={repliedMessage}/>
+                    <Messages
+                        messages={messages}
+                        name={name}
+                        replyMessage={replyMessage}
+                        repliedMessage={repliedMessage}
+
+
+                    />
 
                     <Feedback myTyping={myTyping} typingUser={typingUser}/>
 
