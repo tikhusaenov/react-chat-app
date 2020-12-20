@@ -1,8 +1,9 @@
 .userIsTyping {
-    position: relative;
     width: 100%;
-    bottom: 0;
+    bottom: 30px;
     color: black;
+    display: inline-block;
     font-size: 16px;
     padding-left: 20px;
+    font-style: italic;
 }

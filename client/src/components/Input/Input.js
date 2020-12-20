@@ -33,7 +33,10 @@ const Input = ({
                             setMessageWithRepliedMessage(true)
                         }
                     } else {
+
                         sendTyping(false)
+
+
                     }
 
                 }}

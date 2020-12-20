@@ -19,10 +19,13 @@ let socket;
 const Chat = ({ location }) => {
     const [name, setName] = useState('');
     const [message, setMessage] = useState('');
-    const [users, setUsers] = useState('');
     const [messages, setMessages] = useState([]);
+    const [users, setUsers] = useState('');
+
     const [myTyping, setMyTyping] = useState(false)
     const [typingUser, setTypingUser] = useState('')
+
+    const [repliedMessages, setRepliedMessages] = useState([])
     const [repliedMessage, setRepliedMessage] = useState('')
     const [messageWithRepliedMessage, setMessageWithRepliedMessage] = useState(false)
 
@@ -43,10 +46,8 @@ const Chat = ({ location }) => {
 
     useEffect(() => {
         socket.on('message', message => {
-            setMessages(messages => [ ...messages, message ]);
-
+            setMessages(messages => [ ...messages, message ])
             setMyTyping(false)
-
         });
         socket.on("roomData", ({ users }) => {
             setUsers(users);
@@ -67,21 +68,14 @@ const Chat = ({ location }) => {
 
 
 
-    const sendMessage = (event, repliedMessage) => {
+    const sendMessage = (event) => {
         event.preventDefault();
 
         if(message){
             socket.emit(
-                'sendMessage',
-                repliedMessage ?
-                    `[${repliedMessage}] <=
-                     ${message}`
-
-                    : message,
-                () => {
+                'sendMessage', message, repliedMessage, () => {
                     setMessage('')
                     setRepliedMessage(null)
-
                 });
         }
 
@@ -99,7 +93,6 @@ const Chat = ({ location }) => {
     const replyMessage = (event, {text,user}) => {
         event.preventDefault();
         setRepliedMessage(`${user}: ${text}`)
-        console.log(repliedMessage)
     }
 
 
@@ -127,10 +120,9 @@ const Chat = ({ location }) => {
                     <Messages
                         messages={messages}
                         name={name}
+                        messageWithRepliedMessage={messageWithRepliedMessage}
                         replyMessage={replyMessage}
                         repliedMessage={repliedMessage}
-
-
                     />
 
                     <Feedback myTyping={myTyping} typingUser={typingUser}/>
