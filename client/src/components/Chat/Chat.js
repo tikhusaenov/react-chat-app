@@ -25,11 +25,12 @@ const Chat = ({ location }) => {
     const [myTyping, setMyTyping] = useState(false)
     const [typingUser, setTypingUser] = useState('')
 
-    const [repliedMessages, setRepliedMessages] = useState([])
     const [repliedMessage, setRepliedMessage] = useState('')
     const [messageWithRepliedMessage, setMessageWithRepliedMessage] = useState(false)
 
+    const [valueToEdit, setValueToEdit] = useState('')
 
+    const [edittedMessage, setEdittedMessage] = useState(message)
 
 
     useEffect(() => {
@@ -47,6 +48,9 @@ const Chat = ({ location }) => {
     useEffect(() => {
         socket.on('message', message => {
             setMessages(messages => [ ...messages, message ])
+            if(valueToEdit) {
+                console.log(message)
+            }
             setMyTyping(false)
         });
         socket.on("roomData", ({ users }) => {
@@ -76,6 +80,9 @@ const Chat = ({ location }) => {
                 'sendMessage', message, repliedMessage, () => {
                     setMessage('')
                     setRepliedMessage(null)
+                    // if (editMessage) {
+                    //     setMessage(message)
+                    // }
                 });
         }
 
@@ -90,10 +97,29 @@ const Chat = ({ location }) => {
         }
     }
 
-    const replyMessage = (event, {text,user}) => {
+    const replyMessage = (event, { text,user }) => {
         event.preventDefault();
         setRepliedMessage(`${user}: ${text}`)
     }
+
+    const addMessageToInput = (event, {text}) => {
+        event.preventDefault()
+
+        setValueToEdit(text)
+
+    }
+
+    const editMessage = (event) => {
+        event.preventDefault()
+        // console.log(`was ${edittedMessage}`)
+        setEdittedMessage(valueToEdit)
+
+        setMessage(edittedMessage)
+
+        // console.log(message)
+    }
+
+
 
 
 
@@ -119,6 +145,7 @@ const Chat = ({ location }) => {
 
                     <Messages
                         messages={messages}
+                        addMessageToInput={addMessageToInput}
                         name={name}
                         messageWithRepliedMessage={messageWithRepliedMessage}
                         replyMessage={replyMessage}
@@ -137,6 +164,9 @@ const Chat = ({ location }) => {
                         message={message}
                         sendMessage={sendMessage}
                         setMessage={setMessage}
+                        setValueToEdit={setValueToEdit}
+                        valueToEdit={valueToEdit}
+                        editMessage={editMessage}
                     />
                 </div>
             </div>

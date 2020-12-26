@@ -9,9 +9,19 @@ const Input = ({
                    setMessage,
                    sendMessage,
                    message,
-                   sendTyping
+                   sendTyping,
+                   setValueToEdit,
+                   valueToEdit,
+                   editMessage
                 }) =>
 {
+    // const valueEditing = () => {
+    //     if (valueToEdit) {
+    //         message = valueToEdit
+    //     } else {
+    //         return message
+    //     }
+    // }
 
 
 
@@ -23,31 +33,43 @@ const Input = ({
                 className="messageInput"
                 type="text"
                 placeholder="Write a message..."
-                value={message}
+                value={valueToEdit ? (
+                    valueToEdit
+                )
+                    : message}
 
                 onChange={({target: {value}}) => {
-                    setMessage(value)
+                    if(valueToEdit) {
+                        setValueToEdit(value)
+                        setMessage(value)
+                    } else {
+                        setMessage(value)
+                    }
                     if(value) {
                         sendTyping(true)
                         if (repliedMessage) {
                             setMessageWithRepliedMessage(true)
                         }
+
                     } else {
-
                         sendTyping(false)
-
 
                     }
 
                 }}
                 onKeyPress={event => {
                     if (event.key === 'Enter') {
+
                         if (messageWithRepliedMessage) {
                             sendMessage(event, repliedMessage)
+                        }
+                        else if (valueToEdit) {
+                            editMessage(event, valueToEdit)
                         }
                         else {
                             sendMessage(event)
                         }
+
                    } else return null
                 }}
             />

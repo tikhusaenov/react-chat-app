@@ -4,7 +4,7 @@ import './Message.css';
 
 import ReactEmoji from 'react-emoji';
 
-const Message = ({ message: { text, user, replied, time}, name, replyMessage, repliedMessage}) => {
+const Message = ({ message: { text, user, replied, time}, name, replyMessage, repliedMessage, addMessageToInput, valueToEdit}) => {
     let isSentByCurrentUser = false;
 
     const trimmedName = name.trim().toLowerCase();
@@ -35,6 +35,12 @@ const Message = ({ message: { text, user, replied, time}, name, replyMessage, re
                         </div>
                     </div>
 
+                    <button className="editMessage" onClick={e => {
+                        valueToEdit = {text}
+                        addMessageToInput(e,valueToEdit)
+                    }}>
+                        edit
+                    </button>
 
                     <button className="replyButton" onClick={e => {
                         repliedMessage = {text, user}
@@ -48,6 +54,8 @@ const Message = ({ message: { text, user, replied, time}, name, replyMessage, re
             )
             : (
                 <div className="messageContainer justifyStart">
+
+
                     <button className="replyButton" onClick={e => {
                         repliedMessage = {text, user}
                         console.log(repliedMessage)
