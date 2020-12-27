@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "Setup\r run npm install && npm start for both client and server side to start the development server",
   "main": "index.js",
-  "engines": {
-    "node": "12.17.x"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
