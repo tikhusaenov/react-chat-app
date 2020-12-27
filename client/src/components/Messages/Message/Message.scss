@@ -18,6 +18,9 @@
   &:hover {
     opacity: 1;
   }
+  &:focus {
+    outline: none;
+  }
 
 }
 
@@ -48,13 +51,13 @@
   }
 
 
+
 }
 
 .sentText {
   display: flex;
   align-items: center;
-  font-family: Helvetica;
-  color: white;
+  color: black;
   letter-spacing: 0.3px;
 }
 
@@ -63,13 +66,13 @@
   margin: 5px 5px 0 5px;
   border-radius: 10px;
   padding: 5px 10px 5px 10px;
-  background-color: #838383;
+  background-color: #6FB0FF;
   color: white;
   font-size: 0.8em;
   font-style: italic;
   letter-spacing: 1px;
-  border: 1px solid #454545;
-  box-shadow: inset 0 0 10px #676767;
+  border: 1px solid white;
+  box-shadow: inset 0 0 2px white;
 }
 .other {
   background-color: #E8E8E8;
@@ -83,11 +86,11 @@
 
   font-size: 9px;
   text-align: right;
-  font-style: italic;
+
   bottom: 6px;
-  opacity: 0.6;
+
   right: 6px;
-  font-weight: bold;
+
 
 
 }
@@ -117,7 +120,7 @@
 }
 
 .backgroundBlue {
-  background: #5A5A5A;
+  background: #2185FF;
 }
 
 .backgroundLight {

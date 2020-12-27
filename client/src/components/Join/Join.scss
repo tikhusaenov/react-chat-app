@@ -1,6 +1,6 @@
 html, body {
-  font-family: 'Roboto', sans-serif;
   padding: 0;
+  font-family: 'Poppins', sans-serif;
   margin: 0;
 }
 
@@ -18,7 +18,7 @@ html, body {
   text-align: center;
   height: 100vh;
   align-items: center;
-  background-color: #1A1A1D;
+  background: linear-gradient( #53E4D8, #4B41FF);
 }
 
 .joinInnerContainer {
@@ -26,29 +26,34 @@ html, body {
 }
 
 .joinInput {
-  border-radius: 0;
+  border-radius: 10px;
   padding: 15px 20px;
   width: 100%;
+  border: none;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
 }
 
 .heading {
   color: white;
   font-size: 2.5em;
+  font-weight: bold;
   padding-bottom: 10px;
-  border-bottom: 2px solid white;
+  border-bottom: 5px solid white;
 }
 
-.button {
+.buttonSubmit {
   color: white;
-  text-transform: uppercase;
   text-decoration: none;
-  background: #242424;
+  background: #4964FF;
   cursor: pointer;
-
-  padding: 20px;
-  border-radius: 5px;
+  box-shadow: 0 0 15px 4px rgba(0,0,0,0.1);
+  font-size: 1em;
+  letter-spacing: 1px;
+  font-weight: 400;
+  padding: 15px;
+  border-radius: 15px;
   display: inline-block;
-  border: none;
+  border: 2px solid white;
   width: 100%;
   transition: 0.3s;
   
@@ -56,8 +61,7 @@ html, body {
     outline: 0;
   }
   &:hover {
-    background: #D3D3D3;
-    color: black;
+    background: #7C90FF;
 
   }
 }
@@ -70,7 +74,6 @@ html, body {
   .joinOuterContainer {
     height: 100%;
   }
-
   .joinInnerContainer {
     width: 90%;
   }

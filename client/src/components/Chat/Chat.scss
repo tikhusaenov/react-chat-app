@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
 .header {
@@ -7,14 +8,19 @@
   height: 5vh;
   display: flex;
   align-items: center;
-  background-color: #242424;
+  background: white;
+
+
+  box-shadow:  0 2px 10px 0 #B8B8B8;
+
 
 }
 .outerContainer {
   display: flex;
   justify-content: space-between;
   height: 95vh;
-  background-color: #666666;
+  background-color: #F2F2F2;
+
 }
 
 .container {
@@ -23,6 +29,7 @@
   justify-content: space-between;
   background: #FFFFFF;
   height: 100%;
+  box-shadow:  0 2px 10px 0 #B8B8B8;
   width: 90%;
 }
 .chatHeaderLeftInnerContainer {
@@ -31,7 +38,7 @@
   align-items: center;
   margin-left: 2%;
   font-size: 12px;
-  color: white;
+  color: black;
 }
 
 .chatHeaderRightInnerContainer {
@@ -39,6 +46,9 @@
   flex: 0.5;
   justify-content: flex-end;
   margin-right: 2%;
+  svg {
+    fill: black;
+  }
 
 }
 
