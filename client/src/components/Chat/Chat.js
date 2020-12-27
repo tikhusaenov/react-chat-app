@@ -11,7 +11,7 @@ import './Chat.scss';
 
 
 
-const ENDPOINT = 'http://localhost:5000';
+const ENDPOINT = '/';
 
 let socket;
 
