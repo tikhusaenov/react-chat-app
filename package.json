@@ -1,0 +1,23 @@
+{
+  "name": "socketio-react-chat-application",
+  "version": "1.0.0",
+  "description": "Setup\r run npm install && npm start for both client and server side to start the development server",
+  "main": "index.js",
+  "engines": {
+    "node": "12.17.x"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tikhusaenov/react-chat-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tikhusaenov/react-chat-app/issues"
+  },
+  "homepage": "https://github.com/tikhusaenov/react-chat-app#readme"
+}
