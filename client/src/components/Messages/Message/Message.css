@@ -5,12 +5,26 @@
     color: white;
     display: inline-block;
     max-width: 80%;
+
+}
+.replyButton {
+     border: none;
+     background: none;
+     cursor: pointer;
+     opacity: 0.1;
+     transition: 0.2s;
+     visibility: hidden;
+
+ }
+
+.replyButton:hover {
+    opacity: 1;
 }
 
 .messageText {
     width: 100%;
     letter-spacing: 0;
-    padding: 0 30px 2px 10px;
+    padding: 0 50px 2px 10px;
     float: left;
     font-size: 1em;
     word-wrap: break-word;
@@ -23,10 +37,13 @@
 .messageContainer {
     display: flex;
     justify-content: flex-end;
-
     padding: 0 1%;
     margin-top: 10px;
 
+}
+.messageContainer:hover .replyButton {
+    visibility: visible;
+    transition: 0.3s;
 }
 
 .sentText {
@@ -38,17 +55,7 @@
 }
 
 
-.replyButton {
-    border: none;
-    background: none;
-    cursor: pointer;
-    opacity: 0.1;
-    transition: 0.2s;
-}
 
-.replyButton:hover {
-    opacity: 1;
-}
 
 .repliedMessageBlock {
     margin: 5px 5px 0 5px;
@@ -71,6 +78,7 @@
 }
 .timeOfMessage {
     position:absolute;
+
     font-size: 9px;
     text-align: right;
     font-style: italic;

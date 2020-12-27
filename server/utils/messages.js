@@ -8,8 +8,16 @@ const joinRoom = (socket, io) => {
 
         if (error) return callback(error)
 
-        socket.emit('message', {user: 'admin', text: `${user.name}, welcome to the chat room!`})
-        socket.broadcast.emit('message', {user: 'admin', text: `${user.name} has joined!`})
+        socket.emit('message', {
+            user: 'admin',
+            text: `${user.name}, welcome to the chat room!`,
+            time: moment().format('h:mm a'),
+        })
+        socket.broadcast.emit('message', {
+            user: 'admin',
+            text: `${user.name} has joined!`,
+            time: moment().format('h:mm a'),
+        })
         io.emit('roomData', {  users: getUsersInRoom() });
         callback()
     })
@@ -44,7 +52,11 @@ const disconnection = (socket, io) => {
         console.log('User had left!!!')
         const user = removeUser(socket.id);
         if(user) {
-            io.emit('message', { user: 'admin', text: `${user.name} has left.` });
+            io.emit('message', {
+                user: 'admin',
+                text: `${user.name} has left.`,
+                time: moment().format('h:mm a'),
+            });
             io.emit('roomData', { users: getUsersInRoom()});
         }
     })

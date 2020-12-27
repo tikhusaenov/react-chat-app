@@ -22,8 +22,6 @@ const Message = ({ message: { text, user, replied, time}, name, replyMessage, re
 
                     <p className="sentText pr-10">You</p>
 
-
-
                     <div className="messageBox backgroundBlue">
 
                         <div className={replied ? "repliedMessageBlock" : null}>
