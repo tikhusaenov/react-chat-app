@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './Message.css';
+import './Message.scss';
 
 import ReactEmoji from 'react-emoji';
 
@@ -33,12 +33,12 @@ const Message = ({ message: { text, user, replied, time}, name, replyMessage, re
                         </div>
                     </div>
 
-                    <button className="editMessage" onClick={e => {
-                        valueToEdit = {text}
-                        addMessageToInput(e,valueToEdit)
-                    }}>
-                        edit
-                    </button>
+                    {/*<button className="editMessage" onClick={e => {*/}
+                    {/*    valueToEdit = {text}*/}
+                    {/*    addMessageToInput(e,valueToEdit)*/}
+                    {/*}}>*/}
+                    {/*    edit*/}
+                    {/*</button>*/}
 
                     <button className="replyButton" onClick={e => {
                         repliedMessage = {text, user}

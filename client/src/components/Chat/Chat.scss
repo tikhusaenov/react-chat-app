@@ -8,8 +8,8 @@
   display: flex;
   align-items: center;
   background-color: #242424;
-}
 
+}
 .outerContainer {
   display: flex;
   justify-content: space-between;
@@ -25,7 +25,6 @@
   height: 100%;
   width: 90%;
 }
-
 .chatHeaderLeftInnerContainer {
   flex: 0.5;
   display: flex;
@@ -40,6 +39,7 @@
   flex: 0.5;
   justify-content: flex-end;
   margin-right: 2%;
+
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
@@ -52,10 +52,9 @@
     height: 100%;
   }
 }
+
 @media (min-width: 480px) and (max-width: 1200px) {
   .container {
     width: 100%;
   }
 }
-
-/*# sourceMappingURL=Chat.css.map */

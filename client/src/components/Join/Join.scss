@@ -1,5 +1,5 @@
 html, body {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   padding: 0;
   margin: 0;
 }
@@ -44,19 +44,22 @@ html, body {
   text-decoration: none;
   background: #242424;
   cursor: pointer;
+
   padding: 20px;
   border-radius: 5px;
   display: inline-block;
   border: none;
   width: 100%;
   transition: 0.3s;
-}
-.button:focus {
-  outline: 0;
-}
-.button:hover {
-  background: #D3D3D3;
-  color: black;
+  
+  &:focus {
+    outline: 0;
+  }
+  &:hover {
+    background: #D3D3D3;
+    color: black;
+
+  }
 }
 
 .mt-20 {
@@ -73,4 +76,3 @@ html, body {
   }
 }
 
-/*# sourceMappingURL=Join.css.map */

@@ -7,7 +7,7 @@ import Feedback from "../Feedback/Feedback";
 import InfoBar from '../InfoBar/InfoBar';
 import Input from '../Input/Input';
 import RepliedMessage from "../RepliedMessage/RepliedMessage";
-import './Chat.css';
+import './Chat.scss';
 
 
 

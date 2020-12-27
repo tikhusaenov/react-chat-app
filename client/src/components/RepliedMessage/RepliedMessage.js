@@ -1,5 +1,5 @@
 import React from 'react'
-import './RepliedMessage.css'
+import './RepliedMessage.scss'
 
 const RepliedMessage = ({repliedMessage, setRepliedMessage}) => {
 

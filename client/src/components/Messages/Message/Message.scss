@@ -1,12 +1,12 @@
 .messageBox {
-  position: relative;
+  position:relative;
   background: #F3F3F3;
   border-radius: 15px;
   color: white;
   display: inline-block;
   max-width: 80%;
-}
 
+}
 .replyButton {
   border: none;
   background: none;
@@ -14,9 +14,11 @@
   opacity: 0.1;
   transition: 0.2s;
   visibility: hidden;
-}
-.replyButton:hover {
-  opacity: 1;
+
+  &:hover {
+    opacity: 1;
+  }
+
 }
 
 .messageText {
@@ -26,20 +28,26 @@
   float: left;
   font-size: 1em;
   word-wrap: break-word;
+
+  img {
+    vertical-align: middle;
+  }
 }
-.messageText img {
-  vertical-align: middle;
-}
+
+
 
 .messageContainer {
   display: flex;
   justify-content: flex-end;
   padding: 0 1%;
   margin-top: 10px;
-}
-.messageContainer:hover .replyButton {
-  visibility: visible;
-  transition: 0.3s;
+
+  &:hover .replyButton {
+    visibility: visible;
+    transition: 0.3s;
+  }
+
+
 }
 
 .sentText {
@@ -49,6 +57,7 @@
   color: white;
   letter-spacing: 0.3px;
 }
+
 
 .repliedMessageBlock {
   margin: 5px 5px 0 5px;
@@ -62,16 +71,16 @@
   border: 1px solid #454545;
   box-shadow: inset 0 0 10px #676767;
 }
-
 .other {
   background-color: #E8E8E8;
   color: black;
   box-shadow: inset 0 0 10px #CECECE;
   border: 1px solid #C6C6C6;
-}
 
+}
 .timeOfMessage {
-  position: absolute;
+  position:absolute;
+
   font-size: 9px;
   text-align: right;
   font-style: italic;
@@ -79,6 +88,8 @@
   opacity: 0.6;
   right: 6px;
   font-weight: bold;
+
+
 }
 
 .pl-10 {
@@ -112,5 +123,3 @@
 .backgroundLight {
   background: #F3F3F3;
 }
-
-/*# sourceMappingURL=Message.css.map */

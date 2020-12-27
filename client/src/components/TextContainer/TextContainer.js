@@ -3,7 +3,7 @@ import React from 'react';
 import onlineIcon from '../../icons/onlineIcon.png';
 
 
-import './TextContainer.css';
+import './TextContainer.scss';
 
 
 const TextContainer = ({ users }) => (
