@@ -11,7 +11,7 @@ import './Chat.scss';
 
 
 
-const ENDPOINT = '/';
+const ENDPOINT = 'http://localhost:5000';
 
 let socket;
 
@@ -68,9 +68,6 @@ const Chat = ({ location }) => {
 
 
     }, []);
-
-
-
 
     const sendMessage = (event) => {
         event.preventDefault();
