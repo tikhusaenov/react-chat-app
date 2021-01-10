@@ -3,9 +3,14 @@
   width: 100%;
 }
 
+.headingUsers {
+  border-bottom: 1px solid black;
+  padding-bottom: 10px;
+}
+
 .textContainer {
-  color: white;
-  padding-left: 1%;
+  color: black;
+  padding-left: 2%;
 }
 .textContainer h1 {
   margin-bottom: 0;
@@ -25,8 +30,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 10px;
-  letter-spacing: 1px;
-  border-bottom: 2px solid white;
+  border-bottom: 1px solid black;
   padding-bottom: 10px;
 }
 

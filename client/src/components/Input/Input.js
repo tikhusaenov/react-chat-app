@@ -56,8 +56,7 @@ const Input = ({
                             sendMessage(event, repliedMessage)
                         }
                         else if (valueToEdit) {
-                            editMessage(event, valueToEdit, message)
-
+                            editMessage(event, valueToEdit)
                         }
                         else {
                             sendMessage(event)
