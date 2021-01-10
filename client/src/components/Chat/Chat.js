@@ -11,7 +11,7 @@ import './Chat.scss';
 
 
 
-const ENDPOINT = 'http://localhost:5000';
+const ENDPOINT = 'http://localhost:3000';
 
 let socket;
 
@@ -28,9 +28,6 @@ const Chat = ({ location }) => {
     const [repliedMessage, setRepliedMessage] = useState('')
     const [messageWithRepliedMessage, setMessageWithRepliedMessage] = useState(false)
 
-    const [valueToEdit, setValueToEdit] = useState('')
-
-    const [edittedMessage, setEdittedMessage] = useState(false)
 
 
     useEffect(() => {
@@ -47,10 +44,7 @@ const Chat = ({ location }) => {
 
     useEffect(() => {
         socket.on('message', message => {
-            if(valueToEdit) {
-                setMessage(valueToEdit)
-                setMessages(messages => [ ...messages, message ])
-            } else setMessages(messages => [ ...messages, message ])
+            setMessages(messages => [ ...messages, message ])
             setMyTyping(false)
 
         });
@@ -75,7 +69,7 @@ const Chat = ({ location }) => {
 
         if(message){
             socket.emit(
-                'sendMessage', message, repliedMessage, () => {
+                'sendMessage', message, repliedMessage,() => {
                     setMessage('')
                     setRepliedMessage(null)
                 });
@@ -97,21 +91,6 @@ const Chat = ({ location }) => {
         setRepliedMessage(`${user}: ${text}`)
     }
 
-    const addMessageToInput = (event, {text}) => {
-        event.preventDefault()
-
-        console.log(valueToEdit)
-        // setEdittedMessage(true)
-        // console.log(edittedMessage)
-
-    }
-
-    const editMessage = (event, valueToEdit, message) => {
-        event.preventDefault()
-        setValueToEdit(valueToEdit)
-        setMessage(message)
-
-    }
 
 
 
@@ -139,15 +118,10 @@ const Chat = ({ location }) => {
 
                     <Messages
                         messages={messages}
-                        addMessageToInput={addMessageToInput}
                         name={name}
                         messageWithRepliedMessage={messageWithRepliedMessage}
                         replyMessage={replyMessage}
                         repliedMessage={repliedMessage}
-                        edittedMessage={edittedMessage}
-                        setEdittedMessage={setEdittedMessage}
-                        setValueToEdit={setValueToEdit}
-                        valueToEdit={valueToEdit}
                     />
 
                     <Feedback myTyping={myTyping} typingUser={typingUser}/>
@@ -162,9 +136,6 @@ const Chat = ({ location }) => {
                         message={message}
                         sendMessage={sendMessage}
                         setMessage={setMessage}
-                        setValueToEdit={setValueToEdit}
-                        valueToEdit={valueToEdit}
-                        editMessage={editMessage}
                     />
                 </div>
             </div>

@@ -8,10 +8,6 @@ const Message = ({ message: { text, user, replied, time, edit},
                      name,
                      replyMessage,
                      repliedMessage,
-                     addMessageToInput,
-                     edittedMessage,
-                     setValueToEdit,
-                     setEdittedMessage,
                      valueToEdit}) => {
     let isSentByCurrentUser = false;
 
@@ -20,7 +16,6 @@ const Message = ({ message: { text, user, replied, time, edit},
     if(user === trimmedName) {
         isSentByCurrentUser = true;
     }
-    // console.log(text, edit)
 
 
 
@@ -39,23 +34,11 @@ const Message = ({ message: { text, user, replied, time, edit},
                             {replied}
                         </div>
 
-                        <p className="messageText colorWhite">{(edit && valueToEdit) ? (
-
-                            ReactEmoji.emojify(valueToEdit)
-
-                        ) : ReactEmoji.emojify(text)}</p>
+                        <p className="messageText colorWhite">{edit ? ReactEmoji.emojify(valueToEdit) : ReactEmoji.emojify(text) }</p>
                         <div className="timeOfMessage">
                             {time}
                         </div>
                     </div>
-
-                    <button className="editMessage" onClick={e => {
-                            setValueToEdit(text)
-                            addMessageToInput(e, valueToEdit)
-                            setEdittedMessage(true)
-                    }}>
-                        edit
-                    </button>
 
                     <button className="replyButton" onClick={e => {
                         repliedMessage = {text, user}

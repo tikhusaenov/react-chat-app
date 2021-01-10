@@ -15,14 +15,6 @@ const Input = ({
                    editMessage
                 }) =>
 {
-    // const valueEditing = () => {
-    //     if (valueToEdit) {
-    //         message = valueToEdit
-    //     } else {
-    //         return message
-    //     }
-    // }
-
 
 
     return (
@@ -39,12 +31,12 @@ const Input = ({
                     : message}
 
                 onChange={({target: {value}}) => {
-                    if(valueToEdit) {
-                        setValueToEdit(value)
+                    // if(valueToEdit) {
+                    //     setValueToEdit(value)
+                    //     setMessage(valueToEdit)
+                    // } else {
                         setMessage(value)
-                    } else {
-                        setMessage(value)
-                    }
+                    // }
                     if(value) {
                         sendTyping(true)
                         if (repliedMessage) {
