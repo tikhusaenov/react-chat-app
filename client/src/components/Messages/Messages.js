@@ -9,7 +9,7 @@ import './Messages.scss';
 
 
 
-const Messages = ({ messages, name, replyMessage, repliedMessage, addMessageToInput}) => (
+const Messages = ({ messages, name, replyMessage, valueToEdit, repliedMessage,setValueToEdit,  addMessageToInput, setEdittedMessage, edittedMessage}) => (
     <ScrollToBottom className="messages">
         {
             messages.map((message, i) =>
@@ -17,9 +17,13 @@ const Messages = ({ messages, name, replyMessage, repliedMessage, addMessageToIn
 
                     <Message message={message}
                              name={name}
+                             valueToEdit={valueToEdit}
                              replyMessage={replyMessage}
                              repliedMessage={repliedMessage}
                              addMessageToInput={addMessageToInput}
+                             edittedMessage={edittedMessage}
+                             setValueToEdit={setValueToEdit}
+                             setEdittedMessage={setEdittedMessage}
                     />
                 </div>
 

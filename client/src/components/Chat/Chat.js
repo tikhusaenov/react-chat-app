@@ -30,7 +30,7 @@ const Chat = ({ location }) => {
 
     const [valueToEdit, setValueToEdit] = useState('')
 
-    const [edittedMessage, setEdittedMessage] = useState(message)
+    const [edittedMessage, setEdittedMessage] = useState(false)
 
 
     useEffect(() => {
@@ -47,11 +47,12 @@ const Chat = ({ location }) => {
 
     useEffect(() => {
         socket.on('message', message => {
-            setMessages(messages => [ ...messages, message ])
             if(valueToEdit) {
-                console.log(message)
-            }
+                setMessage(valueToEdit)
+                setMessages(messages => [ ...messages, message ])
+            } else setMessages(messages => [ ...messages, message ])
             setMyTyping(false)
+
         });
         socket.on("roomData", ({ users }) => {
             setUsers(users);
@@ -77,9 +78,6 @@ const Chat = ({ location }) => {
                 'sendMessage', message, repliedMessage, () => {
                     setMessage('')
                     setRepliedMessage(null)
-                    // if (editMessage) {
-                    //     setMessage(message)
-                    // }
                 });
         }
 
@@ -102,18 +100,17 @@ const Chat = ({ location }) => {
     const addMessageToInput = (event, {text}) => {
         event.preventDefault()
 
-        setValueToEdit(text)
+        console.log(valueToEdit)
+        // setEdittedMessage(true)
+        // console.log(edittedMessage)
 
     }
 
-    const editMessage = (event) => {
+    const editMessage = (event, valueToEdit, message) => {
         event.preventDefault()
-        // console.log(`was ${edittedMessage}`)
-        setEdittedMessage(valueToEdit)
+        setValueToEdit(valueToEdit)
+        setMessage(message)
 
-        setMessage(edittedMessage)
-
-        // console.log(message)
     }
 
 
@@ -147,6 +144,10 @@ const Chat = ({ location }) => {
                         messageWithRepliedMessage={messageWithRepliedMessage}
                         replyMessage={replyMessage}
                         repliedMessage={repliedMessage}
+                        edittedMessage={edittedMessage}
+                        setEdittedMessage={setEdittedMessage}
+                        setValueToEdit={setValueToEdit}
+                        valueToEdit={valueToEdit}
                     />
 
                     <Feedback myTyping={myTyping} typingUser={typingUser}/>

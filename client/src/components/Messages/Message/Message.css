@@ -106,10 +106,12 @@
 
 .backgroundBlue {
   background: #2185FF;
+  box-shadow: inset 0 0 2px #CECECE;
 }
 
 .backgroundLight {
   background: #F3F3F3;
+  box-shadow: inset 0 0 2px #CECECE;
 }
 
 /*# sourceMappingURL=Message.css.map */

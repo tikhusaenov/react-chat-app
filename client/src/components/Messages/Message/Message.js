@@ -4,7 +4,15 @@ import './Message.scss';
 
 import ReactEmoji from 'react-emoji';
 
-const Message = ({ message: { text, user, replied, time}, name, replyMessage, repliedMessage, addMessageToInput, valueToEdit}) => {
+const Message = ({ message: { text, user, replied, time, edit},
+                     name,
+                     replyMessage,
+                     repliedMessage,
+                     addMessageToInput,
+                     edittedMessage,
+                     setValueToEdit,
+                     setEdittedMessage,
+                     valueToEdit}) => {
     let isSentByCurrentUser = false;
 
     const trimmedName = name.trim().toLowerCase();
@@ -12,12 +20,15 @@ const Message = ({ message: { text, user, replied, time}, name, replyMessage, re
     if(user === trimmedName) {
         isSentByCurrentUser = true;
     }
+    // console.log(text, edit)
+
 
 
     return (
 
         isSentByCurrentUser
             ? (
+
                 <div className="messageContainer justifyEnd">
 
                     <p className="sentText pr-10">You</p>
@@ -27,18 +38,24 @@ const Message = ({ message: { text, user, replied, time}, name, replyMessage, re
                         <div className={replied ? "repliedMessageBlock" : null}>
                             {replied}
                         </div>
-                        <p className="messageText colorWhite">{ReactEmoji.emojify(text)}</p>
+
+                        <p className="messageText colorWhite">{(edit && valueToEdit) ? (
+
+                            ReactEmoji.emojify(valueToEdit)
+
+                        ) : ReactEmoji.emojify(text)}</p>
                         <div className="timeOfMessage">
                             {time}
                         </div>
                     </div>
 
-                    {/*<button className="editMessage" onClick={e => {*/}
-                    {/*    valueToEdit = {text}*/}
-                    {/*    addMessageToInput(e,valueToEdit)*/}
-                    {/*}}>*/}
-                    {/*    edit*/}
-                    {/*</button>*/}
+                    <button className="editMessage" onClick={e => {
+                            setValueToEdit(text)
+                            addMessageToInput(e, valueToEdit)
+                            setEdittedMessage(true)
+                    }}>
+                        edit
+                    </button>
 
                     <button className="replyButton" onClick={e => {
                         repliedMessage = {text, user}

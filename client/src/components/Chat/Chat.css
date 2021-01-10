@@ -8,8 +8,8 @@
   height: 5vh;
   display: flex;
   align-items: center;
-  background: #F2F2F2;
-  box-shadow: 0 2px 10px 0 #B8B8B8;
+  background: #2A2A2A;
+  border-bottom: 1px solid white;
 }
 
 .chatHeaderLeftInnerContainer {
@@ -18,7 +18,7 @@
   align-items: center;
   margin-left: 2%;
   font-size: 12px;
-  color: black;
+  color: white;
 }
 
 .chatHeaderRightInnerContainer {
@@ -28,14 +28,14 @@
   margin-right: 2%;
 }
 .chatHeaderRightInnerContainer svg {
-  fill: black;
+  fill: white;
 }
 
 .outerContainer {
   display: flex;
   justify-content: space-between;
   height: 95vh;
-  background-color: #F2F2F2;
+  background-color: #2A2A2A;
 }
 
 .container {
@@ -44,7 +44,6 @@
   justify-content: space-between;
   background: #FFFFFF;
   height: 100%;
-  box-shadow: 0 2px 10px 0 #B8B8B8;
   width: 90%;
 }
 

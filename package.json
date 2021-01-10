@@ -4,10 +4,10 @@
   "description": "Setup\r run npm install && npm start for both client and server side to start the development server",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently 'npm run react' 'npm run server'",
     "react": "react-scripts start client/",
     "server": "nodemon server/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently --kill-others \"npm run react\" \"npm run server\""
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/tikhusaenov/react-chat-app#readme",
   "devDependencies": {
-    "concurrently": "^5.3.0"
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.7",
+    "react-scripts": "^4.0.1"
   }
 }
