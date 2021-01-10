@@ -10,7 +10,6 @@ const Input = ({
                    sendMessage,
                    message,
                    sendTyping,
-                   setValueToEdit,
                    valueToEdit,
                    editMessage
                 }) =>
@@ -31,12 +30,7 @@ const Input = ({
                     : message}
 
                 onChange={({target: {value}}) => {
-                    // if(valueToEdit) {
-                    //     setValueToEdit(value)
-                    //     setMessage(valueToEdit)
-                    // } else {
-                        setMessage(value)
-                    // }
+                    setMessage(value)
                     if(value) {
                         sendTyping(true)
                         if (repliedMessage) {

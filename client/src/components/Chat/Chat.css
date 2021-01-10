@@ -5,11 +5,10 @@
 
 .header {
   position: relative;
-  height: 5vh;
+  height: 4vh;
   display: flex;
   align-items: center;
-  background: #F2F2F2;
-  box-shadow: 0 2px 10px 0 #B8B8B8;
+  background: #005380;
 }
 
 .chatHeaderLeftInnerContainer {
@@ -18,7 +17,7 @@
   align-items: center;
   margin-left: 2%;
   font-size: 12px;
-  color: black;
+  color: white;
 }
 
 .chatHeaderRightInnerContainer {
@@ -28,14 +27,14 @@
   margin-right: 2%;
 }
 .chatHeaderRightInnerContainer svg {
-  fill: black;
+  fill: white;
 }
 
 .outerContainer {
   display: flex;
   justify-content: space-between;
-  height: 95vh;
-  background-color: #F2F2F2;
+  height: 92vh;
+  background-color: #00759F;
 }
 
 .container {
@@ -44,8 +43,21 @@
   justify-content: space-between;
   background: #FFFFFF;
   height: 100%;
-  box-shadow: 0 2px 10px 0 #B8B8B8;
   width: 90%;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 12px;
+  background: #2B2B2B;
+  height: 4vh;
+}
+footer a {
+  text-decoration: none;
+  color: white;
 }
 
 @media (min-width: 320px) and (max-width: 480px) {

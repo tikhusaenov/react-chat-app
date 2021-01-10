@@ -11,7 +11,7 @@ import './Chat.scss';
 
 
 
-const ENDPOINT = 'http://localhost:3000';
+const ENDPOINT = 'http://localhost:5000';
 
 let socket;
 
@@ -55,7 +55,7 @@ const Chat = ({ location }) => {
             if (!myTyping) {
                 setMyTyping(true)
                 setTypingUser(user)
-                console.log(`${user} typing is received`)
+
 
             }
 
@@ -139,7 +139,11 @@ const Chat = ({ location }) => {
                     />
                 </div>
             </div>
+            <footer>
+                <p>Developed by <a href="https://github.com/tikhusaenov">Tim Khusaenov</a></p>
+            </footer>
         </div>
+
     );
 }
 

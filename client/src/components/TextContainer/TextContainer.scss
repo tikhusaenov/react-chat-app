@@ -4,13 +4,15 @@
 }
 
 .headingUsers {
-  border-bottom: 1px solid black;
+  border-bottom: 2px solid white;
   padding-bottom: 10px;
 }
 
 .textContainer {
-  color: black;
-  padding-left: 2%;
+  color: white;
+
+  padding-left: 1%;
+
 
   h1 {
     margin-bottom: 0;
@@ -22,8 +24,12 @@
   display: flex;
   align-items: center;
   font-size: 12px;
-  margin-bottom: 50%;
 
+  margin-bottom: 50%;
+  svg {
+    margin-right: 10px;
+    fill: white;
+  }
   img {
     padding-left: 10px;
   }
@@ -34,7 +40,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 10px;
-  border-bottom: 1px solid black;
+  border-bottom: 2px solid white;
   padding-bottom: 10px;
 }
 
